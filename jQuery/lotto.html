@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>로또번호 생성기</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel='stylesheet' href='../css/import.css' type='text/css' />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/respond.src.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/gnb.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		var arr = [];
+		var count = 6;
+		var aaa;
+
+		var sameBool = false;
+		//
+		// for( var i = 0; i<sample.length; i++) {
+		// 	if(sample[i] == "e") {
+		// 		console.log("?");
+		// 	}else{
+		// 		console.log("!");
+		// 	}
+		// 	console.log(sample[i]);
+		// }
+		function setCount() {
+			aaa = Math.floor((Math.random() * 45) + 1);
+			// arr.push(aaa);
+			// console.log(arr , aaa)
+			if(arr.length < count) {
+				for( var i = 0; i<count; i++) {
+					if(arr[i] == aaa) {
+						sameBool = true;
+					}
+				}
+
+				if(!sameBool){
+					addLotto();
+				}
+				sameBool = false;
+			} else {
+				clearInterval(myVar);
+				arr.sort(function(a, b){return a-b})
+				jQuery('.lotto').text(arr);
+			}
+		}
+		
+		function addLotto() {
+			arr.push(aaa);
+			console.log(arr)
+		}
+		// jQuery('.aaa').click(function(){
+		// 	aaa = Math.floor((Math.random() * 10) + 1);
+		// 	// console.log("?");
+		// 	setCount(aaa);
+		// });
+		var myVar = setInterval(function(){ setCount() }, 1);
+		// function initFnc() {
+		// 	aaa = Math.floor((Math.random() * 10) + 1);
+		// 	arr.push(aaa);
+		// }
+		// initFnc();
+	});			
+
+</script>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript">
+		alert("ie9이상 또는 크롬을 사용하세요.");
+	</script>
+<![endif]-->
+</head>
+<body>
+	<p>로또번호생성기</p>
+	<div class="lotto">
+		
+	</div>
+</body>
+</html>

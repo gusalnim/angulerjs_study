@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel='stylesheet' href='../css/import.css' type='text/css' />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/anguler.min.js"></script>
+<script type="text/javascript" src="../js/respond.src.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/gnb.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery('.a').bind('click keydown',aaa)
+	 function aaa(){
+	 	alert('aaa')
+	};
+
+	jQuery('#aaa').click(function(){
+		alert(jQuery('#aaa').text())
+	});
+	//jQuery('#aaa').trigger('click');
+
+	jQuery('.q').click(function(){
+		jQuery('.bbb').focus();
+		jQuery("<span>focused</span>").appendTo("body").fadeOut(1000);
+	});
+	jQuery('.s').click(function(){
+		jQuery('.bbb').triggerHandler('focus');
+	});
+	jQuery('.bbb').focus(function(){
+		//jQuery("<span>focused</span>").appendTo("body").fadeOut(1000);
+	});
+
+	jQuery('form').bind('submit',function(e){
+		console.log(e.name,e.surname);
+	});
+	jQuery('form').trigger({
+		type:'submit',
+		name:'황승연',
+		surname:'럭키가이'
+	});
+});
+</script>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript">
+		alert("ie9이상 또는 크롬을 사용하세요.");
+	</script>
+<![endif]-->
+</head>
+<body>
+	<div id="wrap">
+		<p><input type="text" class="a"></p>
+		<p id="aaa">황승ㅇ연ㄴㄴㄴㄴ</p>
+	</div>
+	<button class="q">q</button>
+	<button class="s">s</button>
+	<input type="text" class="bbb" value="바보">
+	<div ng-app="">
+	 	<p>Name : <input type="text" ng-model="name"></p>
+	 	<h1>Hello {{name}}</h1>
+	</div>
+
+</body>
+</html>

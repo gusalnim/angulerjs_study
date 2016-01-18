@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel='stylesheet' href='../css/import.css' type='text/css' />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/respond.src.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/gnb.js"></script>
+<script type="text/javascript">
+function esc(text){
+	return text
+		.replace('&','&amp;')
+		.replace('<','&lt;')
+		.replace('>','&gt;');
+}
+$('document').ready(function(){
+	function fillTable(names) {
+		console.log("???");
+		var e = esc;
+		var html = [], h = -1;
+		html[++h] = '<table id="nameTable">';
+		html[++h] = '<tbody>';
+		for( var name, i = -1; name = names[++i];) {
+			console.log(i , names[i] )
+			html[++h] = '<tr><td class="name">';
+			html[++h] = esc(name.first);
+			html[++h] = ' ';
+			html[++h] = esc(name.last);
+			html[++h] = '</td><td class="adress">';
+			html[++h] = esc(name.street);
+			html[++h] = '<br/>';
+			html[++h] = esc(name.city);
+			html[++h] = ', ';
+			html[++h] = esc(name.state);
+			html[++h] = ' ';
+			html[++h] = esc(name.zip);
+			html[++h] = '</td></tr>';
+		}
+		html[++h] = '</tbody>';
+		html[++h] = '</table>';
+		// console.log(html);
+		$('#container').html(html.join(''));
+	}
+	$.getJSON('name.json', function(json) {
+		fillTable(json.names);
+	})
+});
+</script>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript">
+		alert("ie9이상 또는 크롬을 사용하세요.");
+	</script>
+<![endif]-->
+<style>
+	#nameTable {  width:100%;}
+	#nameTable td { border:1px solid #eaeaea; padding:1em; }
+</style>
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+</body>
+</html>

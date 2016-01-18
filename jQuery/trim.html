@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel='stylesheet' href='../css/import.css' type='text/css' />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/respond.src.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/gnb.js"></script>
+<script type="text/javascript">
+jQuery('document').ready(function(){
+	jQuery('input.cleanup').blur(function(){
+		var value = $.trim(jQuery(this).val() );
+		jQuery(this).val(value);
+	});
+});
+</script>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript">
+		alert("ie9이상 또는 크롬을 사용하세요.");
+	</script>
+<![endif]-->
+</head>
+<body>
+	<div id="wrap">
+		<input type="text" name="a" class="cleanup">
+		<input type="text" name="b" class="cleanup">
+	</div>
+</body>
+</html>

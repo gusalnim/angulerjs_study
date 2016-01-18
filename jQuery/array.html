@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel='stylesheet' href='../css/import.css' type='text/css' />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/respond.src.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/gnb.js"></script>
+<script type="text/javascript">
+
+$('document').ready(function(){
+	var months = ["january",'february','march','april','may','june','july','august','september','october','november','december'];
+	$.each(months,function(index,value){
+		$('#months').append('<p>' + value + '</p>');
+	});
+	var days = {sunday : 0, monday : 1 , tuesday : 2 , wednesday : 3 , thursday : 4 , friday : 5 , saturday : 6};
+	$.each(days,function(key,value){
+		console.log(key , value);
+		$('#months').append('<p>' + key + value + '</p>');
+	});
+	months = $.grep(months , function(value , i){
+		return (value.indexOf('j') == 0);
+	});
+	$('#months2').html('<p>' + months.join('</p><p>') + '</p>');
+	months = $.map(months , function(value , i){
+		return value.substr(0,2);
+	});
+	$('#months3').html('<p>' + months.join('</p><p>') + '</p>');
+
+	days = $.map(days , function(key , value){
+		return value.substr(0,3);
+	});
+	$('#days2').html('<p>' + days.join('</p><p>') + '</p>');
+});
+</script>
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript">
+		alert("ie9이상 또는 크롬을 사용하세요.");
+	</script>
+<![endif]-->
+
+</head>
+<body>
+	<div id="months">
+		
+	</div>
+	<div id="days">
+		
+	</div>
+	<div id="months2">
+		
+	</div>
+	<div id="months3">
+		
+	</div>
+	<div id="days2">
+		
+	</div>
+</body>
+</html>
